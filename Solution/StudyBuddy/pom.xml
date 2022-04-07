@@ -14,7 +14,7 @@
 	<name>StudyBuddy</name>
 	<description>Backend project for Spring Boot StudyBuddy Application</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

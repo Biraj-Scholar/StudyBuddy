@@ -2,14 +2,13 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @Data
@@ -33,11 +32,12 @@ public class AppUser {
 	// Credentials : Email Id used as userID
 	private String userId;
 	private String userPassword;
-	
+
+	@ManyToMany(fetch = EAGER)
 	private Collection<Role> roles = new ArrayList<>();	
 	
 	// Display Name 
 	private String userName;
 	
-	private Collection<LearningBlocker> userBlocker = new ArrayList<>();
+	//private Collection<LearningBlocker> userBlocker = new ArrayList<>();
 }
