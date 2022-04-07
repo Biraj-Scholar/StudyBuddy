@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Platform Name: Account</title>
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- Add JQuery from the CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+<script>
+    <!-- Modify the function to take URL and HTTP_Verb also as parameters  -->
+    <!-- When you take the URL and HTTPverb as parameters you can use the same defined function in more places by passing correct paraments   -->
+    function makeBackendServerCallPOST(dataForBackendServer) {
+
+        var settings = {
+            "url": "http://localhost:8080/api/users/save",
+
+            "method": "POST",
+            "crossDomain": true,
+
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": dataForBackendServer,
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
+
+    function getUserLoginData(){
+
+        // Get the values from the HTML UI Elements
+        let name = document.getElementById("name").value;
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        let loginData = JSON.stringify({
+            "id": "",
+            "name": name,
+            "username": username,
+            "password": password,
+            "roles": []
+        });
+
+        return loginData;
+    }
+</script>
+
+<h1>Welcome to My Awesome App to connect with Backend server</h1>
+
+
+<label for="name">Name:</label><br>
+<input type="text" id="name" name="name"><br>
+
+<label for="username">Username:</label><br>
+<input type="email" id="username" name="username"><br>
+
+<label for="password">Password:</label><br>
+<input type="password" id="password" name="password"> <br>
+
+<input type="submit" onclick="makeBackendServerCallPOST(getUserLoginData())" value="Login">
+<input type="reset">
+
+</body>
+</html>
